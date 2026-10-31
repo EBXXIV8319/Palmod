@@ -1,0 +1,9 @@
+* text=auto eol=lf
+
+# Markdown uses two trailing spaces for an explicit line break.
+*.md whitespace=-blank-at-eol
+
+# Preserve installed files byte-for-byte, including their CRLF line endings.
+resource_share/Scripts/main.lua -text whitespace=cr-at-eol
+resource_share/Info.json -text whitespace=cr-at-eol
+resource_share/InstallManifest.json -text whitespace=cr-at-eol

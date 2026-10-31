@@ -1,0 +1,21 @@
+{
+  "ModName": "\u8D44\u6E90\u4E92\u901A",
+  "PackageName": "ziyuan",
+  "Thumbnail": "thumbnail.png",
+  "Version": "1.0.0",
+  "DebugMode": false,
+  "MinRevision": 82182,
+  "Author": "\u6885\u5DDD\u5E93\u6893",
+  "Dependencies": null,
+  "Tags": [
+    "UE4SS"
+  ],
+  "InstallRule": [
+    {
+      "Type": "Lua",
+      "Targets": [
+        "./Scripts"
+      ]
+    }
+  ]
+}

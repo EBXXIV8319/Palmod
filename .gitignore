@@ -1,0 +1,31 @@
+# Game files, saves, generated binaries and local diagnostics do not belong here.
+/Engine/
+/Pal/
+/Mods/
+**/Saved/
+**/SaveGames/
+**/UE4SS.log
+*.sav
+*.log
+*.dmp
+*.exe
+*.dll
+*.pak
+*.ucas
+*.utoc
+
+# Local build and editor output
+**/build/
+**/out/
+**/.xmake/
+.vs/
+.vscode/
+__pycache__/
+*.pyc
+*.tmp
+*.bak
+.env
+.env.*
+!.env.example
+Thumbs.db
+Desktop.ini

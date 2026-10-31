@@ -1,0 +1,14 @@
+{
+	"Files": [
+		"Mods/NativeMods/UE4SS/Mods/ziyuan/Scripts/main.lua",
+		"Mods/ManagedMods/ziyuan/Info.json"
+	],
+	"Dirs": [
+		"Mods/NativeMods/UE4SS/Mods/ziyuan/Scripts",
+		"Mods/ManagedMods/ziyuan"
+	],
+	"Backups": [],
+	"WorkshopId": 3763145359,
+	"LastInstallTimeUtc": "2026-10-31T04:38:44.274Z",
+	"LastWorkshopUpdateTimeUtc": "2026-07-17T15:53:58.000Z"
+}
