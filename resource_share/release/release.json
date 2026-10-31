@@ -1,0 +1,36 @@
+{
+  "version": "3.7.1-local-test2",
+  "tag": "resource-share-v3.7.1-local-test2",
+  "prerelease": true,
+  "game_version": "1.0.5.102999",
+  "platform": "Windows x64",
+  "mode": "local single-player",
+  "ue4ss_commit": "2281fa311e417b1dfddedbcd49972d764fddb244",
+  "native_source_commit": "2bdeb95f170ba901580e2fcfa625683a9c780807",
+  "native_source_blob": "32db51b80d2b278d8fdbff6f95c737ed2c16dcb3",
+  "dll_sha256": "6AC0165C153F32493FD5C9483BC02693F9BD834EBE65CB99B111B7F65398AD56",
+  "verified": [
+    "A storage chest contained 31 stone; player inventory had no stone; B had no chests or stone; building at B succeeded and A stock decreased by the recipe cost. User confirmed 2026-10-31."
+  ],
+  "not_verified": [
+    "Other item types and storage variants",
+    "Three or more bases",
+    "Distant bases not visited after loading",
+    "Crafting and production",
+    "Insufficient materials",
+    "New or removed chests",
+    "Reloading a save",
+    "Quick Stack and Item Retrieval Device",
+    "Different guilds",
+    "Multiplayer and dedicated servers"
+  ],
+  "runtime_targets": [
+    "dlls",
+    "Scripts",
+    "config.txt",
+    "LICENSE",
+    "MINHOOK-LICENSE.txt",
+    "licenses",
+    "NOTICE.md"
+  ]
+}

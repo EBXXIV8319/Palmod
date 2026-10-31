@@ -1,6 +1,6 @@
 # 本机测试版：3.7.1-local-test2
 
-已编译并覆盖安装，游戏功能尚待用户测试。
+已编译并覆盖安装；用户已确认最小跨据点建造及扣料场景成功，其余功能待测。
 
 - DLL SHA-256：`6AC0165C153F32493FD5C9483BC02693F9BD834EBE65CB99B111B7F65398AD56`
 - 原版备份目录：`E:\SteamLibrary\steamapps\common\Palworld\Mods\Backups\ziyuan-20261031-154730`
@@ -37,3 +37,13 @@
 退出游戏，将运行目录的 `dlls/main.dll` 改名为 `main.dll.disabled`；从备份的 `ziyuan/Scripts/main.lua` 恢复原脚本，从 `Managed/InstallManifest.json` 恢复原安装清单。其余配置和许可证不会自行执行。回退不改动存档。
 
 原始源码另保存在 Git 标签 `resource-share-baseline-v2.3`。
+
+## 用户验收结果（2026-10-31）
+
+**通过：**A 箱子放置 31 个石头；玩家背包无石头；B 没有箱子和石头。用户在 B 查看材料并成功建造，回 A 确认石头按实际成本减少。
+
+同次本机日志确认：四个原生入口全部 `hooked=true`，RVA 与离线检查一致；`ROLE server=1 dedicated=0 -> HOST/SP (server)`；扫描 `chests=2 camps=2 guilds=1 inst=2`。仅记录这段相关摘要，不发布完整运行日志。
+
+未验收：其他材料/箱子类型、三个以上据点、远处未访问据点、制作/生产、材料不足、新增/拆除箱子、重新进档、快速堆叠、物品检索及不同公会隔离。不能把上述一项通过扩展为全部功能通过。多人和专用服务器不在已验证范围。
+
+本次发行沿用同一个 DLL（SHA-256 不变），版本 `3.7.1-local-test2`，标记为 GitHub prerelease；官方 Uploader 包结构已检查，但未执行其安装/上传验收。

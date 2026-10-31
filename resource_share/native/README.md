@@ -1,6 +1,6 @@
 # Native compatibility candidate: 3.7.1-local-test2
 
-Compiled and deployed on 2026-10-31 for Palworld 1.0.5.102999 / UE4SS 2281fa31, local single-player. Gameplay validation is pending the user. This is a test candidate, not a verified release.
+Compiled and deployed on 2026-10-31 for Palworld 1.0.5.102999 / UE4SS 2281fa31, local single-player. The user confirmed cross-base building and correct stone consumption with an empty destination base. Other gameplay scenarios remain pending; distributed as a prerelease.
 
 ## Changes
 
@@ -33,6 +33,10 @@ The portable SDK is under build/winsdk; dependency versions are recorded in depe
 
 ## Pending / limitations
 
-The native resolver uses upstream reflected-function/call-frequency heuristics; its matches have not yet been validated in the running game. All four hook messages must report hooked=true. This version does not claim remote-client support. Coverage of all storage variants and never-visited distant camps remains to be tested. Recipe snapshot counts may take up to two seconds to refresh; native consumption uses actual containers. Source comments in the upstream-derived file retain some description of dormant client functionality.
+The native resolver uses upstream reflected-function/call-frequency heuristics. On 2026-10-31 all four hooks reported hooked=true in-game and matched the offline RVAs. The user confirmed A-to-empty-B stone use and source consumption. This version does not claim remote-client support. Coverage of all storage variants and never-visited distant camps remains to be tested. Recipe snapshot counts may take up to two seconds to refresh; native consumption uses actual containers. Source comments in the upstream-derived file retain some description of dormant client functionality.
 
 This prototype must not be hot-reloaded. Restart the game for each deployment.
+
+## Packaging
+
+`python resource_share/release/package.py` packages the exact tested DLL without recompiling it. The script checks native-source provenance, the pinned DLL hash, both ZIP layouts, metadata targets and every archived file. Outputs are ignored under build/release/. See release/release.json and release/README.zh-CN.md.

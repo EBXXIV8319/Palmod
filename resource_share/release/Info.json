@@ -1,0 +1,30 @@
+{
+  "ModName": "资源互通 / Resource Share (1.0.5 compatibility prerelease)",
+  "PackageName": "ziyuan",
+  "Version": "3.7.1-local-test2",
+  "DebugMode": false,
+  "MinRevision": 102999,
+  "Author": "Sarfflow; 1.0.5 compatibility: IanMoroney; local repair/release: EBXXIV8319",
+  "Dependencies": [
+    "UE4SSExperimentalPW"
+  ],
+  "Tags": [
+    "UE4SS",
+    "Utilities",
+    "Gameplay"
+  ],
+  "InstallRule": [
+    {
+      "Type": "Lua",
+      "Targets": [
+        "./dlls",
+        "./Scripts",
+        "./config.txt",
+        "./LICENSE",
+        "./MINHOOK-LICENSE.txt",
+        "./licenses",
+        "./NOTICE.md"
+      ]
+    }
+  ]
+}
