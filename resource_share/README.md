@@ -4,7 +4,7 @@
 
 共享范围不限定物品种类、数量或据点数，不使用石头等固定物品白名单。A 基地有 10 个石头、B 基地可以使用它们，只是便于复现的最小示例。应覆盖多据点、多种储物箱，以及物品在多个箱子中的合计；远处或本次进档后尚未访问的据点也属于目标范围，需要单独验证加载条件与实现限制。
 
-**当前是故障版本的原始快照，尚未修复。**
+**当前修复分支包含 3.7.1-local-test1 原生适配候选，已编译；游戏内功能待用户验收。原始 Lua 保存在 resource-share-baseline-v2.3 标签。**
 
 ## 原始版本
 
@@ -25,7 +25,7 @@
 | `InstallManifest.json` | `Mods/ManagedMods/ziyuan/InstallManifest.json` |
 | `docs/diagnosis-2026-10-31.md` | `diagnostics/ziyuan-2026-10-31.md` |
 
-前三个文件保持原始内容；校验值见 [baseline.sha256](baseline.sha256)。`InstallManifest.json` 是安装来源记录，包含本机安装时间，不应作为运行时配置修改或覆盖回游戏。
+初始提交中的前三个文件校验值见 [baseline.sha256](baseline.sha256)。`InstallManifest.json` 是安装来源记录，包含本机安装时间，不应作为运行时配置修改或覆盖回游戏。
 
 原包 `Info.json` 引用了 `thumbnail.png`，但被检查的安装目录中没有此文件。本快照不补造缩略图，也不宣称已是完整可发布安装包。
 

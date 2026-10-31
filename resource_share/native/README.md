@@ -1,30 +1,35 @@
-# Native compatibility work in progress
+# Native compatibility candidate: 3.7.1-local-test1
 
-Status: SDK access blocked; no repaired binary has been compiled or deployed.
+Compiled and deployed on 2026-10-31 for Palworld 1.0.5.102999 / UE4SS 2281fa31, local single-player. Gameplay validation is pending the user. This is a test candidate, not a verified release.
 
-`reference/` contains the unchanged upstream candidate, not our completed fix:
-- Repository: https://github.com/IanMoroney/palworld-integrated-storage
-- Commit: `6a3de750da7d416a2b02d1852c3dac27d21a6b8b`
-- PR: https://github.com/Sarfflow/palworld-integrated-storage/pull/5
-- `dllmain.cpp` SHA-256: `6e60aa41e6f5ebc29fc0f55c86ed0bd9bbc309275c0ebd1e279dfb870d5f1d93`
-- License: reference/LICENSE (MIT, Sarfflow)
-- xmake.lua is the original target definition; its `src/dllmain.cpp` path assumes the upstream build layout.
+## Changes
 
-Local build inputs (ignored by Git):
-- build/RE-UE4SS: checked out at installed UE4SS revision 2281fa31.
-- Required deps/first/Unreal commit: 1cb4c98746f03dfcbf2f0394b59dfec0c9f83a04.
-- Authenticated requests for Re-UE4SS/UEPseudo and EpicGames/UnrealEngine returned HTTP 404.
-- Official UE4SS-Palworld_zDev.zip contains DLL/PDB and runtime files, not the required Unreal headers.
-- Visual Studio 2022 Community, MSVC 14.44.35207 is installed.
-- build/minhook was fetched for feasibility investigation; the upstream target uses PolyHook2. No MinHook changes were made.
+- Adapted PR #5 (6a3de750da7d416a2b02d1852c3dac27d21a6b8b); unchanged reference and MIT license are in reference/.
+- Native container query, camp ownership filter, consume and recipe count hooks.
+- Same-guild grouping, no item-ID whitelist or fixed camp count.
+- Discovery runs on the game thread every two seconds; clears state before map changes; unregisters lifecycle callbacks on unload.
+- Reflected map, guild, module, container and slot properties replace hard-coded offsets in the authority scan. StaticId inside ItemId is also located by reflection.
+- Avoids dereferencing cached camp pointers for recipe guild comparisons.
+- Incomplete address resolution leaves hooks uninstalled; partial detour installation is rolled back.
+- Uses MinHook (license in MINHOOK-LICENSE.txt). Remote-client display detours and RPC registration are disabled in this local test build.
+- Old Lua registration is replaced by a launcher message to avoid two simultaneous implementations.
 
-Resume after Epic/GitHub authorization:
-1. Verify authenticated access to Re-UE4SS/UEPseudo; do not assume account linking alone suffices.
-2. Fetch the exact submodule commit using authenticated Git. Obtain the remaining declared build dependencies.
-3. Review the candidate's native discovery heuristics, game-thread safety, raw offsets, lifecycle handling, stale cached counts and chest coverage before adapting it.
-4. Build against the installed UE4SS revision and validate imports, hook resolution and failure handling.
-5. Back up installed ziyuan, deploy only a built and checked candidate, avoid running two competing storage implementations.
-6. Have the user validate all-camp/all-item behavior, UI counts and real consumption.
+## Build
 
-Account linking instructions: https://www.unrealengine.com/ue-on-github/
-No installed game/mod files were changed in this build attempt.
+Run `python resource_share/native/build.py` from the repository. Build dependencies are local and ignored; no private SDK code is published here. build.py uses the existing Visual Studio compiler, portable Windows SDK, matching UE4SS headers, and an import library generated from the installed UE4SS.dll.
+
+The portable SDK is under build/winsdk; dependency versions are recorded in dependencies.json. Initial dependency access requires Epic/GitHub authorization. The build cache also contains the reference upstream UE4SS source and xwin download cache.
+
+## Validation performed
+
+- MSVC x64 Shipping/MD build succeeded.
+- start_mod and uninstall_mod exports checked.
+- All 58 UE4SS import symbols matched installed UE4SS.dll exports.
+- Deployed DLL SHA-256 verified against build output.
+- Original main.lua backup hash matched the original baseline.
+
+## Pending / limitations
+
+The native resolver uses upstream reflected-function/call-frequency heuristics; its matches have not yet been validated in the running game. All four hook messages must report hooked=true. This version does not claim remote-client support. Coverage of all storage variants and never-visited distant camps remains to be tested. Recipe snapshot counts may take up to two seconds to refresh; native consumption uses actual containers. Source comments in the upstream-derived file retain some description of dormant client functionality.
+
+This prototype must not be hot-reloaded. Restart the game for each deployment.

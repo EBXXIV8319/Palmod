@@ -1,0 +1,2 @@
+verbose = true
+reconcile_interval_ms = 2000

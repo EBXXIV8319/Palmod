@@ -1,14 +1,19 @@
 {
-	"Files": [
-		"Mods/NativeMods/UE4SS/Mods/ziyuan/Scripts/main.lua",
-		"Mods/ManagedMods/ziyuan/Info.json"
-	],
-	"Dirs": [
-		"Mods/NativeMods/UE4SS/Mods/ziyuan/Scripts",
-		"Mods/ManagedMods/ziyuan"
-	],
-	"Backups": [],
-	"WorkshopId": 3763145359,
-	"LastInstallTimeUtc": "2026-10-31T04:38:44.274Z",
-	"LastWorkshopUpdateTimeUtc": "2026-07-17T15:53:58.000Z"
+  "Files": [
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/Scripts/main.lua",
+    "Mods/ManagedMods/ziyuan/Info.json",
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/dlls/main.dll",
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/config.txt",
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/LICENSE",
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/MINHOOK-LICENSE.txt"
+  ],
+  "Dirs": [
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/Scripts",
+    "Mods/ManagedMods/ziyuan",
+    "Mods/NativeMods/UE4SS/Mods/ziyuan/dlls"
+  ],
+  "Backups": [],
+  "WorkshopId": 3763145359,
+  "LastInstallTimeUtc": "2026-10-31T04:38:44.274Z",
+  "LastWorkshopUpdateTimeUtc": "2026-07-17T15:53:58Z"
 }
