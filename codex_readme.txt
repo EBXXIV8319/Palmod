@@ -1,6 +1,6 @@
 项目：Palmod
 
-1. 当前修复对象为 resource_share，游戏版本为 Palworld v1.0.5.102999，测试模式为本机单人存档。
+1. 当前修复对象为 resource_share，游戏版本为 Palworld v1.0.5.102999，测试模式为本机单人存档。目标是同公会所有据点使用所有据点储物箱中的全部物品；10 个石头只是示例，不得将物品种类、数量或据点数写死。
 2. 先阅读 resource_share/README.md、docs/diagnosis-2026-10-31.md 和 docs/repair-plan.md。
 3. initial baseline 提交中的 Scripts/main.lua、Info.json、InstallManifest.json 是游戏目录中原文件的逐字节副本；SHA-256 记录在 baseline.sha256。
 4. resource_share 是仓库目录名；实际安装包名仍为 ziyuan。调整名称或安装布局时需同步检查安装规则。
