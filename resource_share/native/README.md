@@ -1,8 +1,11 @@
-# Native compatibility candidate: 3.7.1-local-test1
+# Native compatibility candidate: 3.7.1-local-test2
 
 Compiled and deployed on 2026-10-31 for Palworld 1.0.5.102999 / UE4SS 2281fa31, local single-player. Gameplay validation is pending the user. This is a test candidate, not a verified release.
 
 ## Changes
+
+Test1 failed at startup: complete function paths were passed to a short-name lookup. Test2 resolves GetItemStackCount64 on the reflected owning class and logs all four native RVAs. `python resource_share/native/inspect_binary.py [game-exe]` independently reproduces the call-frequency walk from the installed PE, without executing the game or requiring Python packages. It does not prove runtime reflection or detour success.
+
 
 - Adapted PR #5 (6a3de750da7d416a2b02d1852c3dac27d21a6b8b); unchanged reference and MIT license are in reference/.
 - Native container query, camp ownership filter, consume and recipe count hooks.
@@ -24,7 +27,7 @@ The portable SDK is under build/winsdk; dependency versions are recorded in depe
 
 - MSVC x64 Shipping/MD build succeeded.
 - start_mod and uninstall_mod exports checked.
-- All 58 UE4SS import symbols matched installed UE4SS.dll exports.
+- All 56 UE4SS import symbols matched installed UE4SS.dll exports.
 - Deployed DLL SHA-256 verified against build output.
 - Original main.lua backup hash matched the original baseline.
 

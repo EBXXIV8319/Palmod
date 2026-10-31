@@ -485,8 +485,7 @@ static ResolvedSites resolveSites(uintptr_t base) {
     try {
         if (UFunction* ready = functionNamed(STR("OnReadyModuleItemStackInfo"))) {
             UObject* cls = ready->GetOuterPrivate();
-            StringType path = cls ? cls->GetPathName() + STR(":GetItemStackCount64") : StringType();
-            auto* stack = cls ? static_cast<UFunction*>(UObjectGlobals::FindObject(STR("Function"), path.c_str())) : nullptr;
+            auto* stack = cls ? cls->GetFunctionByNameInChain(STR("GetItemStackCount64")) : nullptr;
             if (stack) s.stack = calleeCalledBy(base, execRva(base, stack), 1);
         }
         std::vector<UFunction*> camps;
@@ -1123,7 +1122,7 @@ class ModIntegratedStorageCpp : public CppUserModBase
 public:
     ModIntegratedStorageCpp() : CppUserModBase()
     {
-        ModName = STR("IntegratedStorageCpp"); ModVersion = STR("3.7.1-local-test1");
+        ModName = STR("IntegratedStorageCpp"); ModVersion = STR("3.7.1-local-test2");
         ModDescription = STR("Cross-camp build/craft: use any same-guild camp's stored materials at any camp. Local host compatibility build; client display injection is disabled.");
         ModAuthors = STR("Sarfflow");
     }
@@ -1143,6 +1142,7 @@ public:
         Output::send(STR("[ISGATE] === IntegratedStorage {} loaded, base {:#x} ===\n"), ModVersion, base);
         Output::send(STR("[ISGATE] config: verbose={} reconcile_ms={}\n"), g_verbose, (int)g_reconcileMs);
         ResolvedSites sites = resolveSites(base);
+        Output::send(STR("[ISGATE] resolved RVA: containers={:#x} camp={:#x} consume={:#x} stack={:#x}\n"),sites.getIds,sites.camp,sites.consume,sites.stack);
         if (!sites.getIds || !sites.camp || !sites.consume || !sites.stack) { Output::send(STR("[ISGATE] ERROR: incomplete native resolution; no hooks installed\n")); return; }
         auto maybe = [&](bool en, Target& t, uint32_t rva, uint64_t cb) {
             if (!en) { Output::send(STR("[ISGATE] {} OFF\n"), t.name); return; }
@@ -1169,7 +1169,7 @@ public:
         },opts);
         opts.HookName=STR("storage-reconcile");
         tickId=Unreal::Hook::RegisterEngineTickPostCallback([this](auto&, Unreal::UEngine*,float,bool){gameThreadUpdate();},opts);
-        Output::send(STR("[ISGATE] 3.7.1-local-test1 native hooks installed; tick={} reset={} (gameplay validation pending)\n"),tickId,mapId);
+        Output::send(STR("[ISGATE] 3.7.1-local-test2 native hooks installed; tick={} reset={} (gameplay validation pending)\n"),tickId,mapId);
     }
     void gameThreadUpdate() {
         uint64_t now = GetTickCount64();
