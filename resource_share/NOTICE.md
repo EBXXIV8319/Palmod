@@ -8,4 +8,4 @@
 
 [原作者公开 C++ 仓库](https://github.com/Sarfflow/palworld-integrated-storage) 使用 MIT 许可证，但它是不同的后续实现。若以后复制其代码，应同时带入对应许可证和版权声明。
 
-修复参考：[1.0.5 compatibility update，PR #5](https://github.com/Sarfflow/palworld-integrated-storage/pull/5)，已核对提交 `6a3de750da7d416a2b02d1852c3dac27d21a6b8b`。当前仓库仅保存参考链接，未复制该 PR 的实现，也未安装其二进制。
+修复参考：[1.0.5 compatibility update，PR #5](https://github.com/Sarfflow/palworld-integrated-storage/pull/5)，已核对提交 `6a3de750da7d416a2b02d1852c3dac27d21a6b8b`。`native/reference/` 已保存该固定提交的原始 C++ 候选源码、构建定义及 MIT 许可证，尚未构建或安装。
